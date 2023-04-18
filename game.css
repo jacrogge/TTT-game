@@ -31,3 +31,14 @@
 .square:hover {
 	background-color: #DDD;
 }
+
+.winning-square:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-color: red;
+  transform: translateY(-50%);
+}
