@@ -15,12 +15,19 @@
 }
 
 .square {
-	width: 33.33%;
-	height: 100%;
-	border: 1px solid black;
+	width: calc(100% / 3);
+	height: calc(100% / 3);
+	border: none;
 	box-sizing: border-box;
 	text-align: center;
-	font-size: 72px;
-	line-height: 200px;
+	font-size: 48px;
+	line-height: calc(100% / 3);
 	cursor: pointer;
+	background-color: #EEE;
+	color: #333;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.square:hover {
+	background-color: #DDD;
 }
