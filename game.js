@@ -1,5 +1,6 @@
 const squares = document.querySelectorAll('.square');
 let currentPlayer = 'X';
+const board = ['', '', '', '', '', '', '', '', ''];
 
 squares.forEach(square => {
 	square.addEventListener('click', handleClick);
@@ -10,8 +11,10 @@ function handleClick(event) {
 	if (square.textContent !== '') {
 		return;
 	}
+	const index = Array.from(squares).indexOf(square);
 	square.textContent = currentPlayer;
-	if (checkForWin()) {
+	board[index] = currentPlayer;
+	if (checkForWin(currentPlayer, board)) {
 		alert('Player ' + currentPlayer + ' wins!');
 		resetBoard();
 	} else if (checkForDraw()) {
@@ -22,7 +25,7 @@ function handleClick(event) {
 	}
 }
 
-function checkForWin() {
+function checkForWin(player, board) {
   const winningCombos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -61,5 +64,10 @@ function resetBoard() {
 	squares.forEach(square => {
 		square.textContent = '';
 	});
+	board.fill('');
 	currentPlayer = 'X';
+	document.querySelectorAll('.winning-square').forEach(square => {
+		square.classList.remove('winning-square');
+	});
+	document.querySelector('.winner').innerHTML = '';
 }
